@@ -1,0 +1,6 @@
+[submodule "lib/asio"]
+	path = lib/asio
+	url = https://github.com/chriskohlhoff/asio
+[submodule "lib/json11"]
+	path = lib/json11
+	url = https://github.com/dropbox/json11.git
