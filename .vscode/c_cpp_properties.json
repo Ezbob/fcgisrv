@@ -12,11 +12,9 @@
             "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe",
             "intelliSenseMode": "msvc-x64",
             "includePath": [
-                "${workspaceFolder}/lib/fcgi-2.4.0/**",
+                "${workspaceFolder}/lib/fcgi-2.4.0/include",
                 "${workspaceFolder}/include/**",
-                "${workspaceFolder}/src/**",
-                "${workspaceFolder}/lib/asio/asio/include",
-                "${workspaceFolder}/lib/json11/**"
+                "${workspaceFolder}/src/**"
             ]
         }
     ],
