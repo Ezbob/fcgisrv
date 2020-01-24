@@ -1,11 +1,9 @@
 import pathlib
 import os
+from itertools import chain
 from subprocess import call
 
 root = pathlib.Path(__file__).absolute().parent
-
-print(root)
-src = root / pathlib.Path("src")
 
 def get_files(files_dir):
 
@@ -19,7 +17,7 @@ def get_files(files_dir):
 
 clanformat = [ 'clang-format', '-i' ]
 
-for p in get_files(src):
+for p in chain(get_files(root / "src"), get_files(root / "include")):
     clanformat.append(p)
 
 call(clanformat)
