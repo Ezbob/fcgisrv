@@ -9,7 +9,7 @@ namespace fcgisrv {
     struct IAuthenticator {
         virtual ~IAuthenticator() = default;
         virtual bool
-            is_valid(std::shared_ptr<IServerRequestResponse> const &) = 0;
+            is_valid(std::shared_ptr<IServerRequestResponse>) = 0;
     };
 
 }; // namespace fcgisrv
