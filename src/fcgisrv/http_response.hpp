@@ -5,13 +5,13 @@
 #include <string>
 #include <sstream>
 #include <ostream>
-#include "fcgisrv/basic_formatted_response.hpp"
+#include "fcgisrv/iformatted_response.hpp"
 
 namespace fcgisrv {
 
     static const std::string HTTP_LINE_END = "\r\n";
 
-    class HttpResponse : public BasicFormattedResponse {
+    class HttpResponse : public IFormattedResponse {
     protected:
         std::stringstream m_header;
         std::stringstream m_body;

@@ -4,6 +4,6 @@
 
 using namespace fcgisrv;
 
-bool DefaultAuthenticator::is_valid(std::shared_ptr<BasicServerRequestResponse> const &) {
+bool DefaultAuthenticator::is_valid(std::shared_ptr<IServerRequestResponse>) {
     return true;
 }

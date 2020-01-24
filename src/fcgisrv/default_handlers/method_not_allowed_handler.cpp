@@ -3,7 +3,7 @@
 
 using namespace fcgisrv;
 
-void MethodNotAllowedHandler::handle(std::shared_ptr<fcgisrv::BasicServerRequestResponse> req) {
+void MethodNotAllowedHandler::handle(std::shared_ptr<fcgisrv::IServerRequestResponse> req) {
     req->respond_with(
             "HTTP/1.1 405 Method Not Allowed\r\n"
             "Status: 405 Method Not Allowed\r\n"

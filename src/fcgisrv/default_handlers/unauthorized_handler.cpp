@@ -3,7 +3,7 @@
 
 using namespace fcgisrv;
 
-void UnauthorizedHandler::handle(std::shared_ptr<fcgisrv::BasicServerRequestResponse> req) {
+void UnauthorizedHandler::handle(std::shared_ptr<fcgisrv::IServerRequestResponse> req) {
     req->respond_with(
             "HTTP/1.1 401 Unauthorized\r\n"
             "Status: 401 Unauthorized\r\n"

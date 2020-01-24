@@ -3,7 +3,7 @@
 
 using namespace fcgisrv;
 
-std::shared_ptr<BasicHandler> DefaultDispatcher::select(std::shared_ptr<BasicServerRequestResponse> req_res_ptr) const {
+std::shared_ptr<IHandler> DefaultDispatcher::select(std::shared_ptr<IServerRequestResponse> req_res_ptr) const {
     auto raw_method = req_res_ptr->get_parameter("REQUEST_METHOD");
 
     if ( !raw_method ) {
@@ -54,13 +54,13 @@ void DefaultDispatcher::add_end_slash(std::string &uri) const {
     }
 }
 
-void DefaultDispatcher::dispatch(std::shared_ptr<BasicServerRequestResponse> req_ptr) {
-    std::shared_ptr<BasicHandler> current_handler = select(req_ptr);
+void DefaultDispatcher::dispatch(std::shared_ptr<IServerRequestResponse> req_ptr) {
+    std::shared_ptr<IHandler> current_handler = select(req_ptr);
 
     current_handler->handle(req_ptr);
 }
 
-void DefaultDispatcher::add_endpoint(std::string uri, HttpMethod meth, std::shared_ptr<BasicHandler> handler) {
+void DefaultDispatcher::add_endpoint(std::string uri, HttpMethod meth, std::shared_ptr<IHandler> handler) {
     if (!handler) throw std::invalid_argument("Endpoint pointer is null");
 
     add_end_slash(uri);

@@ -3,7 +3,7 @@
 
 using namespace fcgisrv;
 
-FcgiAcceptor::FcgiAcceptor(BasicDispatcher &dispatch, BasicScheduler &sch)
+FcgiAcceptor::FcgiAcceptor(IDispatcher &dispatch, IScheduler &sch)
     : m_dispatcher(dispatch)
     , m_scheduler(sch) {
     FCGX_Init();

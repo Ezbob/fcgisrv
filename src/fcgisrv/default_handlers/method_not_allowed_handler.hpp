@@ -2,13 +2,13 @@
 #pragma once
 
 #include <memory>
-#include "fcgisrv/basic_server_request_response.hpp"
-#include "fcgisrv/basic_handler.hpp"
+#include "fcgisrv/iserver_request_response.hpp"
+#include "fcgisrv/ihandler.hpp"
 
 namespace fcgisrv {
 
-    struct MethodNotAllowedHandler : public BasicHandler {
-        void handle(std::shared_ptr<fcgisrv::BasicServerRequestResponse>) override;
+    struct MethodNotAllowedHandler : public IHandler {
+        void handle(std::shared_ptr<fcgisrv::IServerRequestResponse>) override;
     };
 
 }; // namespace fcgisrv

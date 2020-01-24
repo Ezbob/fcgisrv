@@ -6,8 +6,8 @@
 #include <memory>
 #include <cstring>
 #include <vector>
-#include "basic_formatted_response.hpp"
-#include "basic_server_request_response.hpp"
+#include "iformatted_response.hpp"
+#include "iserver_request_response.hpp"
 #include "fcgiapp.h"
 
 namespace fcgisrv {
@@ -21,7 +21,7 @@ namespace fcgisrv {
      *
      * When the reference count reaches zero, the request is finished if it has been accepted.
      */
-    class FcgiServerRequestResponse : public BasicServerRequestResponse, 
+    class FcgiServerRequestResponse : public IServerRequestResponse, 
                                 public std::enable_shared_from_this<FcgiServerRequestResponse> {
         FCGX_Request m_request;
         bool m_is_accepted;
@@ -35,7 +35,7 @@ namespace fcgisrv {
 
         bool is_accepted();
 
-        int respond_with(BasicFormattedResponse &res);
+        int respond_with(IFormattedResponse &res);
 
         int respond_with(std::string const &res);
 

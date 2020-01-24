@@ -3,7 +3,7 @@
 
 using namespace fcgisrv;
 
-void NotFoundHandler::handle(std::shared_ptr<fcgisrv::BasicServerRequestResponse> req) {
+void NotFoundHandler::handle(std::shared_ptr<fcgisrv::IServerRequestResponse> req) {
     req->respond_with(
             "HTTP/1.1 404 Not Found\r\n"
             "Status: 404 Not Found\r\n"

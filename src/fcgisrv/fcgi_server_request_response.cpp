@@ -1,6 +1,6 @@
 
 #include "fcgisrv/fcgi_server_request_response.hpp"
-#include "fcgisrv/basic_formatted_response.hpp"
+#include "fcgisrv/iformatted_response.hpp"
 
 using namespace fcgisrv;
 
@@ -23,7 +23,7 @@ bool FcgiServerRequestResponse::is_accepted() {
     return m_is_accepted;
 }
 
-int FcgiServerRequestResponse::respond_with(BasicFormattedResponse &res) {
+int FcgiServerRequestResponse::respond_with(IFormattedResponse &res) {
     auto r = res.render();
     return FCGX_PutStr(r.c_str(), r.size(), m_request.out);
 }

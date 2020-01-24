@@ -3,7 +3,7 @@
 
 using namespace fcgisrv;
 
-void InternalServerErrorHandler::handle(std::shared_ptr<fcgisrv::BasicServerRequestResponse> req) {
+void InternalServerErrorHandler::handle(std::shared_ptr<fcgisrv::IServerRequestResponse> req) {
     req->respond_with(
             "HTTP/1.1 500 Internal Server Error\r\n"
             "Status: 500 Internal Server Error\r\n"

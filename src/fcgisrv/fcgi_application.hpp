@@ -3,10 +3,10 @@
 
 #include <memory>
 #include <thread>
-#include "fcgisrv/basic_acceptor.hpp"
-#include "fcgisrv/basic_scheduler.hpp"
-#include "fcgisrv/basic_authenticator.hpp"
-#include "fcgisrv/basic_dispatcher.hpp"
+#include "fcgisrv/iacceptor.hpp"
+#include "fcgisrv/ischeduler.hpp"
+#include "fcgisrv/iauthenticator.hpp"
+#include "fcgisrv/idispatcher.hpp"
 #include "fcgisrv/default_authenticator.hpp"
 #include "fcgisrv/default_dispatcher.hpp"
 #include "fcgisrv/fcgi_acceptor.hpp"
@@ -17,25 +17,25 @@ namespace fcgisrv {
         template<typename T>
         using Ptr = std::unique_ptr<T>;
 
-        Ptr<BasicScheduler> m_async_scheduler;
-        Ptr<BasicAuthenticator> m_authenticator;
-        Ptr<BasicDispatcher> m_dispatcher;
-        Ptr<BasicAcceptor> m_acceptor;
+        Ptr<IScheduler> m_async_scheduler;
+        Ptr<IAuthenticator> m_authenticator;
+        Ptr<IDispatcher> m_dispatcher;
+        Ptr<IAcceptor> m_acceptor;
 
     public:
         FcgiApplication(
-            std::unique_ptr<BasicScheduler>,
-            std::unique_ptr<BasicAuthenticator> = std::unique_ptr<BasicAuthenticator>(),
-            std::unique_ptr<BasicDispatcher> = std::unique_ptr<BasicDispatcher>(),
-            std::unique_ptr<BasicAcceptor> = std::unique_ptr<BasicAcceptor>()
+            std::unique_ptr<IScheduler>,
+            std::unique_ptr<IAuthenticator> = std::unique_ptr<IAuthenticator>(),
+            std::unique_ptr<IDispatcher> = std::unique_ptr<IDispatcher>(),
+            std::unique_ptr<IAcceptor> = std::unique_ptr<IAcceptor>()
         );
 
-        void add_get(std::string, std::shared_ptr<BasicHandler>);
-        void add_post(std::string, std::shared_ptr<BasicHandler>);
-        void add_options(std::string, std::shared_ptr<BasicHandler>);
-        void add_patch(std::string, std::shared_ptr<BasicHandler>);
-        void add_put(std::string, std::shared_ptr<BasicHandler>);
-        void add_delete(std::string, std::shared_ptr<BasicHandler>);
+        void add_get(std::string, std::shared_ptr<IHandler>);
+        void add_post(std::string, std::shared_ptr<IHandler>);
+        void add_options(std::string, std::shared_ptr<IHandler>);
+        void add_patch(std::string, std::shared_ptr<IHandler>);
+        void add_put(std::string, std::shared_ptr<IHandler>);
+        void add_delete(std::string, std::shared_ptr<IHandler>);
 
         void start_nonblock();
     };
