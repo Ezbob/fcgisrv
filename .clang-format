@@ -1,0 +1,25 @@
+---
+BasedOnStyle: LLVM
+IndentWidth: 4
+---
+Language: Cpp
+ColumnLimit: 80
+SortIncludes: false
+AlwaysBreakTemplateDeclarations: Yes
+AllowShortLambdasOnASingleLine: Empty
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+BreakStringLiterals: true
+CompactNamespaces: false
+FixNamespaceComments: false
+IndentCaseLabels: true
+IndentPPDirectives: BeforeHash
+IndentWrappedFunctionNames: true
+SortUsingDeclarations: true
+NamespaceIndentation: All
+SpaceAfterTemplateKeyword: false
+SpaceBeforeInheritanceColon: false
+SpacesInContainerLiterals: false
+AlignEscapedNewlines: Right
+AlignTrailingComments: true
+AllowShortFunctionsOnASingleLine: Empty
