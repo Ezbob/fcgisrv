@@ -11,14 +11,15 @@
 
 namespace fcgisrv {
 
-    class FcgiAcceptor : public IAcceptor {
+    class FcgiAcceptor: public IAcceptor {
         IDispatcher &m_dispatcher;
         IScheduler &m_scheduler;
 
         std::unique_ptr<std::thread> m_accept_thread;
 
         void start_accepting();
-    public:
+
+      public:
         FcgiAcceptor(IDispatcher &dispatch, IScheduler &multi);
 
         void start() override;

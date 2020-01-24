@@ -15,8 +15,8 @@ namespace fcgisrv {
         Not_a_method
     };
 
-    HttpMethod string_to_httpmethod(std::string const& s);
-    std::string httpmethod_to_string(HttpMethod const& m);
+    HttpMethod string_to_httpmethod(std::string const &s);
+    std::string httpmethod_to_string(HttpMethod const &m);
 };
 
 #endif

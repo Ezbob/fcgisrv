@@ -13,7 +13,7 @@
 
 namespace fcgisrv {
     class FcgiApplication {
-    private:
+      private:
         template<typename T>
         using Ptr = std::unique_ptr<T>;
 
@@ -22,13 +22,12 @@ namespace fcgisrv {
         Ptr<IDispatcher> m_dispatcher;
         Ptr<IAcceptor> m_acceptor;
 
-    public:
+      public:
         FcgiApplication(
             std::unique_ptr<IScheduler>,
             std::unique_ptr<IAuthenticator> = std::unique_ptr<IAuthenticator>(),
             std::unique_ptr<IDispatcher> = std::unique_ptr<IDispatcher>(),
-            std::unique_ptr<IAcceptor> = std::unique_ptr<IAcceptor>()
-        );
+            std::unique_ptr<IAcceptor> = std::unique_ptr<IAcceptor>());
 
         void add_get(std::string, std::shared_ptr<IHandler>);
         void add_post(std::string, std::shared_ptr<IHandler>);

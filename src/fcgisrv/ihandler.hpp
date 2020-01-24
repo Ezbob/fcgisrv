@@ -8,7 +8,8 @@ namespace fcgisrv {
 
     struct IHandler {
         virtual ~IHandler() = default;
-        virtual void handle(std::shared_ptr<IServerRequestResponse> request) = 0;
+        virtual void
+            handle(std::shared_ptr<IServerRequestResponse> request) = 0;
     };
 
 };

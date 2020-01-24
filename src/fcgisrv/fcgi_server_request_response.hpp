@@ -17,16 +17,19 @@ namespace fcgisrv {
      *
      * For convenience sake, a static factory `create` method is included
      * to create new FcgiReqRes instances that are wrapped in a
-     * shared_ptr. A FcgiReqRes instance can also create more shared_ptr to itself by the `get` method.
+     * shared_ptr. A FcgiReqRes instance can also create more shared_ptr to
+     * itself by the `get` method.
      *
-     * When the reference count reaches zero, the request is finished if it has been accepted.
+     * When the reference count reaches zero, the request is finished if it has
+     * been accepted.
      */
-    class FcgiServerRequestResponse : public IServerRequestResponse, 
-                                public std::enable_shared_from_this<FcgiServerRequestResponse> {
+    class FcgiServerRequestResponse
+        : public IServerRequestResponse
+        , public std::enable_shared_from_this<FcgiServerRequestResponse> {
         FCGX_Request m_request;
         bool m_is_accepted;
 
-    public:
+      public:
         FcgiServerRequestResponse();
 
         ~FcgiServerRequestResponse();

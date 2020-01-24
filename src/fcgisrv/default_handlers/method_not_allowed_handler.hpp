@@ -7,7 +7,7 @@
 
 namespace fcgisrv {
 
-    struct MethodNotAllowedHandler : public IHandler {
+    struct MethodNotAllowedHandler: public IHandler {
         void handle(std::shared_ptr<fcgisrv::IServerRequestResponse>) override;
     };
 

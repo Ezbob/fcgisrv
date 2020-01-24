@@ -13,7 +13,7 @@ void FcgiAcceptor::start_accepting() {
     while (true) {
         auto request = std::make_shared<FcgiServerRequestResponse>();
 
-        if ( request->accept() ) {
+        if (request->accept()) {
             m_scheduler.schedule_task([this, request] {
                 m_dispatcher.dispatch(request);
             });

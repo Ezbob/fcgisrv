@@ -4,7 +4,8 @@
 
 using namespace fcgisrv;
 
-FcgiServerRequestResponse::FcgiServerRequestResponse() : m_is_accepted(false) {
+FcgiServerRequestResponse::FcgiServerRequestResponse()
+    : m_is_accepted(false) {
     FCGX_InitRequest(&m_request, 0, 0);
 }
 
@@ -36,13 +37,15 @@ int FcgiServerRequestResponse::log(std::string &res) {
     return FCGX_PutStr(res.c_str(), res.size(), m_request.err);
 }
 
-char const *FcgiServerRequestResponse::get_parameter(std::string const &name) const {
+char const *
+    FcgiServerRequestResponse::get_parameter(std::string const &name) const {
     return FCGX_GetParam(name.c_str(), m_request.envp);
 }
 
-const std::vector<const char *> FcgiServerRequestResponse::get_parameters() const {
+const std::vector<const char *>
+    FcgiServerRequestResponse::get_parameters() const {
     std::vector<const char *> res;
-    for (size_t i = 0; m_request.envp[i] != nullptr; ++i) 
+    for (size_t i = 0; m_request.envp[i] != nullptr; ++i)
         res.push_back(m_request.envp[i]);
     return res;
 }

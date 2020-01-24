@@ -7,8 +7,9 @@
 
 namespace fcgisrv {
 
-    struct UnauthorizedHandler : public IHandler {
-        void handle(std::shared_ptr<fcgisrv::IServerRequestResponse> req) override;
+    struct UnauthorizedHandler: public IHandler {
+        void handle(
+            std::shared_ptr<fcgisrv::IServerRequestResponse> req) override;
     };
 
 }; // namespace fcgisrv

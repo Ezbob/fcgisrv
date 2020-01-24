@@ -11,18 +11,18 @@ namespace fcgisrv {
 
     static const std::string HTTP_LINE_END = "\r\n";
 
-    class HttpResponse : public IFormattedResponse {
-    protected:
+    class HttpResponse: public IFormattedResponse {
+      protected:
         std::stringstream m_header;
         std::stringstream m_body;
         int m_error_code = 200;
 
         std::string translate_code();
 
-    public:
-        void put_header(std::string const& raw);
+      public:
+        void put_header(std::string const &raw);
 
-        void put_header(std::string const& name, std::string const& value);
+        void put_header(std::string const &name, std::string const &value);
 
         void status(int code);
 
@@ -33,7 +33,7 @@ namespace fcgisrv {
         std::string render() override;
     };
 
-    struct JsonResponse : public HttpResponse {
+    struct JsonResponse: public HttpResponse {
         std::string render() override;
     };
 

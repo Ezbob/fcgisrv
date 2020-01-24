@@ -7,7 +7,7 @@
 
 namespace fcgisrv {
 
-    struct InternalServerErrorHandler : public IHandler {
+    struct InternalServerErrorHandler: public IHandler {
         void handle(std::shared_ptr<fcgisrv::IServerRequestResponse>) override;
     };
 

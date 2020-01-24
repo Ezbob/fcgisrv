@@ -3,7 +3,7 @@
 
 using namespace fcgisrv;
 
-HttpMethod fcgisrv::string_to_httpmethod(std::string const& s) {
+HttpMethod fcgisrv::string_to_httpmethod(std::string const &s) {
     if (s == "GET") {
         return HttpMethod::Get;
     } else if (s == "POST") {
@@ -21,7 +21,7 @@ HttpMethod fcgisrv::string_to_httpmethod(std::string const& s) {
     }
 }
 
-std::string fcgisrv::httpmethod_to_string(fcgisrv::HttpMethod const& m) {
+std::string fcgisrv::httpmethod_to_string(fcgisrv::HttpMethod const &m) {
     if (m == fcgisrv::HttpMethod::Get) {
         return "GET";
     } else if (m == fcgisrv::HttpMethod::Post) {

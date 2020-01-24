@@ -9,8 +9,8 @@
 
 namespace fcgisrv {
 
-    class DefaultAuthenticator : public IAuthenticator {
-    public:
+    class DefaultAuthenticator: public IAuthenticator {
+      public:
         ~DefaultAuthenticator() = default;
 
         bool is_valid(std::shared_ptr<IServerRequestResponse>) override;
