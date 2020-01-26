@@ -5,7 +5,8 @@
 using namespace fcgisrv;
 
 FcgiServerRequestResponse::FcgiServerRequestResponse()
-    : m_is_accepted(false) {
+    : m_is_accepted(false)
+    , m_log_stream(&m_log_stream_buf) {
     FCGX_InitRequest(&m_request, 0, 0);
 }
 
@@ -17,6 +18,9 @@ FcgiServerRequestResponse::~FcgiServerRequestResponse() {
 
 bool FcgiServerRequestResponse::accept() {
     m_is_accepted = (FCGX_Accept_r(&m_request) == 0);
+    if (m_is_accepted) {
+        m_log_stream_buf.attach(m_request.err);
+    }
     return m_is_accepted;
 }
 
@@ -33,8 +37,8 @@ int FcgiServerRequestResponse::respond_with(std::string const &res) {
     return FCGX_PutStr(res.c_str(), res.size(), m_request.out);
 }
 
-int FcgiServerRequestResponse::log(std::string &res) {
-    return FCGX_PutStr(res.c_str(), res.size(), m_request.err);
+std::ostream &FcgiServerRequestResponse::log_out() {
+    return m_log_stream;
 }
 
 char const *

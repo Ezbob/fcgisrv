@@ -25,6 +25,12 @@ namespace fcgisrv {
         virtual int respond_with(IFormattedResponse &) = 0;
 
         /**
+         * Returns a stream that can be used to send log messages
+         * to the HTTP server
+         */
+        virtual std::ostream &log_out();
+
+        /**
          * Send a response to the server using a raw string instead of a
          * formatted IFormattedResponse response
          */

@@ -8,7 +8,7 @@
 #include <vector>
 #include "iformatted_response.hpp"
 #include "iserver_request_response.hpp"
-#include "fcgiapp.h"
+#include "fcgio.h"
 
 namespace fcgisrv {
 
@@ -28,6 +28,8 @@ namespace fcgisrv {
         , public std::enable_shared_from_this<FcgiServerRequestResponse> {
         FCGX_Request m_request;
         bool m_is_accepted;
+        fcgi_streambuf m_log_stream_buf;
+        std::ostream m_log_stream;
 
       public:
         FcgiServerRequestResponse();
@@ -42,7 +44,7 @@ namespace fcgisrv {
 
         int respond_with(std::string const &res);
 
-        int log(std::string &res);
+        std::ostream &log_out();
 
         char const *get_parameter(std::string const &name) const override;
 
