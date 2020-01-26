@@ -28,7 +28,7 @@ namespace fcgisrv {
          * Returns a stream that can be used to send log messages
          * to the HTTP server
          */
-        virtual std::ostream &log_out();
+        virtual std::ostream &log_out() = 0;
 
         /**
          * Send a response to the server using a raw string instead of a

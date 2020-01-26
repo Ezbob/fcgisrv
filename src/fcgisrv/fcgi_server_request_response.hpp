@@ -36,15 +36,15 @@ namespace fcgisrv {
 
         ~FcgiServerRequestResponse();
 
-        bool accept();
+        bool accept() override;
 
-        bool is_accepted();
+        bool is_accepted() override;
 
-        int respond_with(IFormattedResponse &res);
+        int respond_with(IFormattedResponse &res) override;
 
-        int respond_with(std::string const &res);
+        int respond_with(std::string const &res) override;
 
-        std::ostream &log_out();
+        std::ostream &log_out() override;
 
         char const *get_parameter(std::string const &name) const override;
 
