@@ -22,18 +22,18 @@ SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 
 # Sources sets
 SET(SOURCES
-    ${SOURCES_PREFIX}/default_dispatcher.cpp
-    ${SOURCES_PREFIX}/default_authenticator.cpp
-    ${SOURCES_PREFIX}/fcgi_acceptor.cpp
-    ${SOURCES_PREFIX}/fcgi_server_request_response.cpp
-    ${SOURCES_PREFIX}/fcgi_application.cpp
-    ${SOURCES_PREFIX}/http_method.cpp
-    ${SOURCES_PREFIX}/http_response.cpp
+    ${SOURCES_PREFIX}/fcgisrv/default_dispatcher.cpp
+    ${SOURCES_PREFIX}/fcgisrv/default_authenticator.cpp
+    ${SOURCES_PREFIX}/fcgisrv/fcgi_acceptor.cpp
+    ${SOURCES_PREFIX}/fcgisrv/fcgi_server_request_response.cpp
+    ${SOURCES_PREFIX}/fcgisrv/fcgi_application.cpp
 
-    ${SOURCES_PREFIX}/default_handlers/internal_server_error_handler.cpp
-    ${SOURCES_PREFIX}/default_handlers/method_not_allowed_handler.cpp
-    ${SOURCES_PREFIX}/default_handlers/not_found_handler.cpp
-    ${SOURCES_PREFIX}/default_handlers/unauthorized_handler.cpp
+    ${SOURCES_PREFIX}/fcgisrv/http_method.cpp
+    ${SOURCES_PREFIX}/fcgisrv/http_response.cpp
+    ${SOURCES_PREFIX}/fcgisrv/default_handlers/internal_server_error_handler.cpp
+    ${SOURCES_PREFIX}/fcgisrv/default_handlers/method_not_allowed_handler.cpp
+    ${SOURCES_PREFIX}/fcgisrv/default_handlers/not_found_handler.cpp
+    ${SOURCES_PREFIX}/fcgisrv/default_handlers/unauthorized_handler.cpp
 )
 
 SET(INCLUDES

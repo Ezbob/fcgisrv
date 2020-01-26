@@ -1,5 +1,5 @@
 
-#include "http_method.hpp"
+#include "fcgisrv/http_method.hpp"
 
 using namespace fcgisrv;
 

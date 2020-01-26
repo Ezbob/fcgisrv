@@ -1,5 +1,5 @@
 
-#include "default_handlers/method_not_allowed_handler.hpp"
+#include "fcgisrv/default_handlers/method_not_allowed_handler.hpp"
 
 using namespace fcgisrv;
 

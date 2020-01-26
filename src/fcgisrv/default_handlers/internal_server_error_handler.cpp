@@ -1,5 +1,5 @@
 
-#include "default_handlers/internal_server_error_handler.hpp"
+#include "fcgisrv/default_handlers/internal_server_error_handler.hpp"
 
 using namespace fcgisrv;
 

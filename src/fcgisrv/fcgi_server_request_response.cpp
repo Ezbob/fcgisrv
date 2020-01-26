@@ -1,6 +1,6 @@
 
-#include "fcgi_server_request_response.hpp"
-#include "iformatted_response.hpp"
+#include "fcgisrv/fcgi_server_request_response.hpp"
+#include "fcgisrv/iformatted_response.hpp"
 
 using namespace fcgisrv;
 

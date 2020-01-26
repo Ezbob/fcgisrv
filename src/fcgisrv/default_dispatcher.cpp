@@ -1,5 +1,5 @@
 
-#include "default_dispatcher.hpp"
+#include "fcgisrv/default_dispatcher.hpp"
 
 using namespace fcgisrv;
 

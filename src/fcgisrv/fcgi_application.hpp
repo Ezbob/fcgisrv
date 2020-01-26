@@ -3,13 +3,13 @@
 
 #include <memory>
 #include <thread>
-#include "iacceptor.hpp"
-#include "ischeduler.hpp"
-#include "iauthenticator.hpp"
-#include "idispatcher.hpp"
-#include "default_authenticator.hpp"
-#include "default_dispatcher.hpp"
-#include "fcgi_acceptor.hpp"
+#include "fcgisrv/iacceptor.hpp"
+#include "fcgisrv/ischeduler.hpp"
+#include "fcgisrv/iauthenticator.hpp"
+#include "fcgisrv/idispatcher.hpp"
+#include "fcgisrv/default_authenticator.hpp"
+#include "fcgisrv/default_dispatcher.hpp"
+#include "fcgisrv/fcgi_acceptor.hpp"
 
 namespace fcgisrv {
     class FcgiApplication {
