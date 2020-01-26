@@ -1,4 +1,4 @@
-#include "fcgisrv/http_response.hpp"
+#include "http_response.hpp"
 #include <string>
 
 using namespace fcgisrv;

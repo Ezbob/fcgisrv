@@ -1,5 +1,5 @@
 
-#include "fcgisrv/default_handlers/unauthorized_handler.hpp"
+#include "default_handlers/unauthorized_handler.hpp"
 
 using namespace fcgisrv;
 

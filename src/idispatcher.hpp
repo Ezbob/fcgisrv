@@ -3,7 +3,7 @@
 
 #include <memory>
 #include <string>
-#include "fcgisrv/http_method.hpp"
+#include "http_method.hpp"
 #include "ihandler.hpp"
 #include "iserver_request_response.hpp"
 

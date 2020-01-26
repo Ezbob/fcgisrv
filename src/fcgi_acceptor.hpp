@@ -3,10 +3,10 @@
 
 #include <memory>
 #include <thread>
-#include "fcgisrv/iacceptor.hpp"
-#include "fcgisrv/ischeduler.hpp"
-#include "fcgisrv/fcgi_server_request_response.hpp"
-#include "fcgisrv/default_dispatcher.hpp"
+#include "iacceptor.hpp"
+#include "ischeduler.hpp"
+#include "fcgi_server_request_response.hpp"
+#include "default_dispatcher.hpp"
 #include "fcgiapp.h"
 
 namespace fcgisrv {

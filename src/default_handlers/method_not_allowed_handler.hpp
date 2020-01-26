@@ -2,8 +2,8 @@
 #pragma once
 
 #include <memory>
-#include "fcgisrv/iserver_request_response.hpp"
-#include "fcgisrv/ihandler.hpp"
+#include "iserver_request_response.hpp"
+#include "ihandler.hpp"
 
 namespace fcgisrv {
 

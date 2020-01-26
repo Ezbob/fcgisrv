@@ -1,15 +1,15 @@
 
 #pragma once
 
-#include "fcgisrv/http_method.hpp"
-#include "fcgisrv/default_handlers/internal_server_error_handler.hpp"
-#include "fcgisrv/default_handlers/method_not_allowed_handler.hpp"
-#include "fcgisrv/default_handlers/not_found_handler.hpp"
-#include "fcgisrv/default_handlers/unauthorized_handler.hpp"
+#include "http_method.hpp"
+#include "default_handlers/internal_server_error_handler.hpp"
+#include "default_handlers/method_not_allowed_handler.hpp"
+#include "default_handlers/not_found_handler.hpp"
+#include "default_handlers/unauthorized_handler.hpp"
 
-#include "fcgisrv/idispatcher.hpp"
-#include "fcgisrv/iserver_request_response.hpp"
-#include "fcgisrv/iauthenticator.hpp"
+#include "idispatcher.hpp"
+#include "iserver_request_response.hpp"
+#include "iauthenticator.hpp"
 
 #include <unordered_map>
 #include <memory>

@@ -1,5 +1,5 @@
 
-#include "fcgisrv/default_handlers/not_found_handler.hpp"
+#include "default_handlers/not_found_handler.hpp"
 
 using namespace fcgisrv;
 

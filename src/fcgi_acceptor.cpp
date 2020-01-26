@@ -1,5 +1,5 @@
 
-#include "fcgisrv/fcgi_acceptor.hpp"
+#include "fcgi_acceptor.hpp"
 
 using namespace fcgisrv;
 

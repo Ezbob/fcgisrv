@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "fcgisrv/iserver_request_response.hpp"
+#include "iserver_request_response.hpp"
 #include <memory>
 
 namespace fcgisrv {
