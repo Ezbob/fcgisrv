@@ -21,10 +21,14 @@ void FcgiAcceptor::start_accepting() {
     }
 }
 
-void FcgiAcceptor::start() {
+void FcgiAcceptor::start_nonblock() {
     if (!m_accept_thread) {
         m_accept_thread = std::unique_ptr<std::thread>(new std::thread([this] {
             start_accepting();
         }));
     }
+}
+
+void FcgiAcceptor::start_block() {
+    start_accepting();
 }

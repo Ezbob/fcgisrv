@@ -41,5 +41,9 @@ void FcgiApplication::add_delete(std::string uri,
 }
 
 void FcgiApplication::start_nonblock() {
-    m_acceptor->start();
+    m_acceptor->start_nonblock();
+}
+
+void FcgiApplication::start_block() {
+    m_acceptor->start_block();
 }

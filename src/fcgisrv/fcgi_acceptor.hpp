@@ -22,6 +22,7 @@ namespace fcgisrv {
       public:
         FcgiAcceptor(IDispatcher &dispatch, IScheduler &multi);
 
-        void start() override;
+        void start_nonblock() override;
+        void start_block() override;
     };
 };

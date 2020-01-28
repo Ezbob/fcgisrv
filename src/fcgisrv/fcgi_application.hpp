@@ -2,7 +2,7 @@
 #pragma once
 
 #include <memory>
-#include <thread>
+#include "fcgisrv/iapplication.hpp"
 #include "fcgisrv/iacceptor.hpp"
 #include "fcgisrv/ischeduler.hpp"
 #include "fcgisrv/iauthenticator.hpp"
@@ -12,7 +12,7 @@
 #include "fcgisrv/fcgi_acceptor.hpp"
 
 namespace fcgisrv {
-    class FcgiApplication {
+    class FcgiApplication : public IApplication {
       private:
         template<typename T>
         using RC_t = std::shared_ptr<T>;
@@ -36,6 +36,7 @@ namespace fcgisrv {
         void add_put(std::string, std::shared_ptr<IHandler>);
         void add_delete(std::string, std::shared_ptr<IHandler>);
 
-        void start_nonblock();
+        void start_nonblock() override;
+        void start_block() override;
     };
 };
