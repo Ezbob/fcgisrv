@@ -15,19 +15,19 @@ namespace fcgisrv {
     class FcgiApplication {
       private:
         template<typename T>
-        using Ptr = std::unique_ptr<T>;
+        using RC_t = std::shared_ptr<T>;
 
-        Ptr<IScheduler> m_async_scheduler;
-        Ptr<IAuthenticator> m_authenticator;
-        Ptr<IDispatcher> m_dispatcher;
-        Ptr<IAcceptor> m_acceptor;
+        RC_t<IScheduler> m_async_scheduler;
+        RC_t<IAuthenticator> m_authenticator;
+        RC_t<IDispatcher> m_dispatcher;
+        RC_t<IAcceptor> m_acceptor;
 
       public:
         FcgiApplication(
-            std::unique_ptr<IScheduler>,
-            std::unique_ptr<IAuthenticator> = std::unique_ptr<IAuthenticator>(),
-            std::unique_ptr<IDispatcher> = std::unique_ptr<IDispatcher>(),
-            std::unique_ptr<IAcceptor> = std::unique_ptr<IAcceptor>());
+            std::shared_ptr<IScheduler>,
+            std::shared_ptr<IAuthenticator> = RC_t<IAuthenticator>(),
+            std::shared_ptr<IDispatcher> = RC_t<IDispatcher>(),
+            std::shared_ptr<IAcceptor> = RC_t<IAcceptor>());
 
         void add_get(std::string, std::shared_ptr<IHandler>);
         void add_post(std::string, std::shared_ptr<IHandler>);
