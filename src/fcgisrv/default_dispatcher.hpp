@@ -26,7 +26,7 @@ namespace fcgisrv {
 
         void dispatch(std::shared_ptr<IServerRequestResponse>) override;
 
-        void add_endpoint(std::string uri, HttpMethod,
+        void add_endpoint(std::string, HttpMethod,
                           std::shared_ptr<IHandler>) override;
 
       private:
