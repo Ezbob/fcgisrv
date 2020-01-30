@@ -3,7 +3,7 @@
 
 #include <memory>
 
-#include "IServer_Request_Response.hpp"
+#include "iserver_request_response.hpp"
 
 namespace fcgisrv {
 

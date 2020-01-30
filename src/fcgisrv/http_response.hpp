@@ -6,7 +6,7 @@
 #include <sstream>
 #include <ostream>
 
-#include "IFormatted_Response.hpp"
+#include "iformatted_response.hpp"
 
 namespace fcgisrv {
 

@@ -1,6 +1,6 @@
 
 
-#include "Default_Authenticator.hpp"
+#include "default_authenticator.hpp"
 
 using namespace fcgisrv;
 

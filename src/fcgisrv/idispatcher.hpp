@@ -4,9 +4,9 @@
 #include <memory>
 #include <string>
 
-#include "Http_Method.hpp"
-#include "IHandler.hpp"
-#include "IServer_Request_Response.hpp"
+#include "http_method.hpp"
+#include "ihandler.hpp"
+#include "iserver_request_response.hpp"
 
 namespace fcgisrv {
 

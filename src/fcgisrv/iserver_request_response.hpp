@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include "IFormatted_Response.hpp"
+#include "iformatted_response.hpp"
 
 namespace fcgisrv {
 

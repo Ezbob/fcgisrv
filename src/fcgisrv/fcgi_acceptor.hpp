@@ -4,11 +4,11 @@
 #include <memory>
 #include <thread>
 
-#include "Default_Dispatcher.hpp"
+#include "default_dispatcher.hpp"
 #include "fcgiapp.h"
-#include "Fcgi_Server_Request_Response.hpp"
-#include "IAcceptor.hpp"
-#include "IScheduler.hpp"
+#include "fcgi_server_request_response.hpp"
+#include "iacceptor.hpp"
+#include "ischeduler.hpp"
 
 namespace fcgisrv {
 

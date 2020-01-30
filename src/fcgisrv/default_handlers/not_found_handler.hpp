@@ -3,8 +3,8 @@
 
 #include <memory>
 
-#include "../IHandler.hpp"
-#include "../IServer_Request_Response.hpp"
+#include "../ihandler.hpp"
+#include "../iserver_request_response.hpp"
 
 namespace fcgisrv {
 

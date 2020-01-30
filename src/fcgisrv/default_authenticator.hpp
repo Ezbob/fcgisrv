@@ -4,8 +4,8 @@
 #define _HEADER_FILE_authenticator_20200103164302_
 
 #include <memory>
-#include "IAuthenticator.hpp"
-#include "IServer_Request_Response.hpp"
+#include "iauthenticator.hpp"
+#include "iserver_request_response.hpp"
 
 namespace fcgisrv {
 

@@ -7,8 +7,8 @@
 #include <cstring>
 #include <vector>
 #include "fcgio.h"
-#include "IFormatted_Response.hpp"
-#include "IServer_Request_Response.hpp"
+#include "iformatted_response.hpp"
+#include "iserver_request_response.hpp"
 
 namespace fcgisrv {
 

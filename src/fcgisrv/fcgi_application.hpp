@@ -3,14 +3,14 @@
 
 #include <memory>
 
-#include "Default_Authenticator.hpp"
-#include "Default_Dispatcher.hpp"
-#include "Fcgi_Acceptor.hpp"
-#include "IAcceptor.hpp"
+#include "default_authenticator.hpp"
+#include "default_dispatcher.hpp"
+#include "fcgi_acceptor.hpp"
+#include "iacceptor.hpp"
 #include "IApplication.hpp"
-#include "IAuthenticator.hpp"
-#include "IDispatcher.hpp"
-#include "IScheduler.hpp"
+#include "iauthenticator.hpp"
+#include "idispatcher.hpp"
+#include "ischeduler.hpp"
 
 namespace fcgisrv {
     class Fcgi_Application: public IApplication {

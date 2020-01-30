@@ -4,14 +4,14 @@
 #include <unordered_map>
 #include <memory>
 #include <string>
-#include "default_handlers/Internal_Server_Error_Handler.hpp"
-#include "default_handlers/Method_Not_Allowed_Handler.hpp"
-#include "default_handlers/Not_Found_Handler.hpp"
-#include "default_handlers/Unauthorized_Handler.hpp"
-#include "Http_Method.hpp"
-#include "IAuthenticator.hpp"
-#include "IDispatcher.hpp"
-#include "IServer_Request_Response.hpp"
+#include "default_handlers/internal_server_error_handler.hpp"
+#include "default_handlers/method_not_allowed_handler.hpp"
+#include "default_handlers/not_found_handler.hpp"
+#include "default_handlers/unauthorized_handler.hpp"
+#include "http_method.hpp"
+#include "iauthenticator.hpp"
+#include "idispatcher.hpp"
+#include "iserver_request_response.hpp"
 
 namespace fcgisrv {
 
