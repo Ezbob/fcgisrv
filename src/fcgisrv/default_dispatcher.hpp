@@ -12,13 +12,21 @@
 #include "iauthenticator.hpp"
 #include "idispatcher.hpp"
 #include "iserver_request_response.hpp"
+#include "ierror_handler_set.hpp"
+#include "error_handler_set.hpp"
 
 namespace fcgisrv {
 
     class Default_Dispatcher: public IDispatcher {
       public:
         Default_Dispatcher(IAuthenticator &auth)
-            : m_authenticator(auth) {}
+            : m_authenticator(auth)
+            , m_error_set(new Error_Handler_Set) {}
+
+        Default_Dispatcher(IAuthenticator &auth,
+                           std::unique_ptr<IError_Handler_Set> error_set)
+            : m_authenticator(auth)
+            , m_error_set(std::move(error_set)) {}
 
         ~Default_Dispatcher() = default;
 
@@ -38,15 +46,7 @@ namespace fcgisrv {
             std::unordered_map<Http_Method, std::shared_ptr<IHandler>>;
         std::unordered_map<std::string, HandlerMap_t> m_dispatch_matrix;
 
-        std::shared_ptr<IHandler> m_handler_500 =
-            std::make_shared<Internal_Server_Error_Handler>();
-        std::shared_ptr<IHandler> m_handler_404 =
-            std::make_shared<Not_Found_Handler>();
-        std::shared_ptr<IHandler> m_handler_401 =
-            std::make_shared<Unauthorized_Handler>();
-        std::shared_ptr<IHandler> m_handler_405 =
-            std::make_shared<Method_Not_Allowed_Handler>();
-
+        std::unique_ptr<IError_Handler_Set> m_error_set;
         IAuthenticator &m_authenticator;
     };
 };
