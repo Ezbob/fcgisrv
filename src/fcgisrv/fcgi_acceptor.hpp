@@ -4,7 +4,7 @@
 #include <memory>
 #include <thread>
 
-#include "default_dispatcher.hpp"
+#include "dispatcher.hpp"
 #include "fcgiapp.h"
 #include "fcgi_server_request_response.hpp"
 #include "iacceptor.hpp"

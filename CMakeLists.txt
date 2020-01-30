@@ -22,8 +22,8 @@ SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 
 # Sources sets
 SET(SOURCES
-    ${SOURCES_PREFIX}/fcgisrv/default_dispatcher.cpp
-    ${SOURCES_PREFIX}/fcgisrv/default_authenticator.cpp
+    ${SOURCES_PREFIX}/fcgisrv/dispatcher.cpp
+    ${SOURCES_PREFIX}/fcgisrv/authenticator.cpp
     ${SOURCES_PREFIX}/fcgisrv/fcgi_acceptor.cpp
     ${SOURCES_PREFIX}/fcgisrv/fcgi_server_request_response.cpp
     ${SOURCES_PREFIX}/fcgisrv/fcgi_application.cpp

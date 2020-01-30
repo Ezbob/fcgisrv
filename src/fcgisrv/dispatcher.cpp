@@ -1,43 +1,43 @@
 
-#include "default_dispatcher.hpp"
+#include "dispatcher.hpp"
 
 using namespace fcgisrv;
 
-std::shared_ptr<IHandler> Default_Dispatcher::select(
+std::shared_ptr<IHandler> Dispatcher::select(
     std::shared_ptr<IServer_Request_Response> req_res_ptr) const {
     auto raw_method = req_res_ptr->get_parameter("REQUEST_METHOD");
 
     if (!raw_method) {
-        return m_error_set->error_500();
+        return m_error_set.error_500();
     }
 
     if (!m_authenticator.is_valid(req_res_ptr)) {
-        return m_error_set->error_401();
+        return m_error_set.error_401();
     }
 
     auto key = build_uri(req_res_ptr->get_parameter("PATH_INFO"));
 
     auto it = m_dispatch_matrix.find(key);
     if (it == m_dispatch_matrix.end()) {
-        return m_error_set->error_404();
+        return m_error_set.error_404();
     }
 
     auto actual_method = Http_Method::from_string(raw_method);
     if (actual_method == Http_Method::Not_a_method) {
-        return m_error_set->error_405();
+        return m_error_set.error_405();
     }
 
     const auto &entry = it->second;
 
     auto h_it = entry.find(actual_method);
     if (h_it == entry.end()) {
-        return m_error_set->error_405();
+        return m_error_set.error_405();
     }
 
     return h_it->second;
 }
 
-std::string Default_Dispatcher::build_uri(const char *raw) const {
+std::string Dispatcher::build_uri(const char *raw) const {
     std::string key;
     if (raw) {
         key = raw;
@@ -48,7 +48,7 @@ std::string Default_Dispatcher::build_uri(const char *raw) const {
     return key;
 }
 
-void Default_Dispatcher::add_end_slash(std::string &uri) const {
+void Dispatcher::add_end_slash(std::string &uri) const {
     if (uri.size() == 0)
         return;
     if (uri.at(uri.size() - 1) != '/') {
@@ -56,15 +56,15 @@ void Default_Dispatcher::add_end_slash(std::string &uri) const {
     }
 }
 
-void Default_Dispatcher::dispatch(
+void Dispatcher::dispatch(
     std::shared_ptr<IServer_Request_Response> req_ptr) {
     std::shared_ptr<IHandler> current_handler = select(req_ptr);
 
     current_handler->handle(req_ptr);
 }
 
-void Default_Dispatcher::add_endpoint(std::string uri, Http_Method meth,
-                                      std::shared_ptr<IHandler> handler) {
+void Dispatcher::add_endpoint(std::string uri, Http_Method meth,
+                                  std::shared_ptr<IHandler> handler) {
     if (!handler)
         throw std::invalid_argument("Endpoint pointer is null");
 
