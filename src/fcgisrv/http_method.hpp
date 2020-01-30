@@ -5,18 +5,23 @@
 #include <string>
 
 namespace fcgisrv {
-    enum class Http_Method {
-        Get,
-        Post,
-        Put,
-        Patch,
-        Delete,
-        Options,
-        Not_a_method
+    class Http_Method {
+
+      public:
+        enum { Get, Post, Put, Patch, Delete, Options, Not_a_method };
+
+        Http_Method(int b = Not_a_method);
+
+        bool operator==(Http_Method const &);
+        bool operator!=(Http_Method const &);
+
+        std::string to_string() const;
+        static Http_Method from_string(std::string const &);
+
+      private:
+        int m_value;
     };
 
-    Http_Method string_to_httpmethod(std::string const &s);
-    std::string httpmethod_to_string(Http_Method const &m);
 };
 
 #endif

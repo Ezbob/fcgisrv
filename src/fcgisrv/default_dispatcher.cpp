@@ -22,7 +22,7 @@ std::shared_ptr<IHandler> Default_Dispatcher::select(
         return m_handler_404;
     }
 
-    auto actual_method = string_to_httpmethod(raw_method);
+    auto actual_method = Http_Method::from_string(raw_method);
     if (actual_method == Http_Method::Not_a_method) {
         return m_handler_405;
     }
