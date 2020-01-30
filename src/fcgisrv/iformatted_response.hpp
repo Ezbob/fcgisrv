@@ -5,8 +5,8 @@
 #include <string>
 
 namespace fcgisrv {
-    struct IFormattedResponse {
-        virtual ~IFormattedResponse() = default;
+    struct IFormatted_Response {
+        virtual ~IFormatted_Response() = default;
         virtual std::string render() = 0;
     };
 }; // namespace fcgisrv

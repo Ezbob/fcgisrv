@@ -1,10 +1,10 @@
 
-#include "fcgisrv/default_handlers/unauthorized_handler.hpp"
+#include "Unauthorized_Handler.hpp"
 
 using namespace fcgisrv;
 
-void UnauthorizedHandler::handle(
-    std::shared_ptr<fcgisrv::IServerRequestResponse> req) {
+void Unauthorized_Handler::handle(
+    std::shared_ptr<fcgisrv::IServer_Request_Response> req) {
     req->respond_with(
         "HTTP/1.1 401 Unauthorized\r\n"
         "Status: 401 Unauthorized\r\n"

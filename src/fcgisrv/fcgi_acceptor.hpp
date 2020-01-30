@@ -3,15 +3,16 @@
 
 #include <memory>
 #include <thread>
-#include "fcgisrv/iacceptor.hpp"
-#include "fcgisrv/ischeduler.hpp"
-#include "fcgisrv/fcgi_server_request_response.hpp"
-#include "fcgisrv/default_dispatcher.hpp"
+
+#include "Default_Dispatcher.hpp"
 #include "fcgiapp.h"
+#include "Fcgi_Server_Request_Response.hpp"
+#include "IAcceptor.hpp"
+#include "IScheduler.hpp"
 
 namespace fcgisrv {
 
-    class FcgiAcceptor: public IAcceptor {
+    class Fcgi_Acceptor: public IAcceptor {
         IDispatcher &m_dispatcher;
         IScheduler &m_scheduler;
 
@@ -20,7 +21,7 @@ namespace fcgisrv {
         void start_accepting();
 
       public:
-        FcgiAcceptor(IDispatcher &dispatch, IScheduler &multi);
+        Fcgi_Acceptor(IDispatcher &dispatch, IScheduler &multi);
 
         void start_nonblock() override;
         void start_block() override;

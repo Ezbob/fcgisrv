@@ -2,12 +2,13 @@
 #pragma once
 
 #include <vector>
-#include "iformatted_response.hpp"
+
+#include "IFormatted_Response.hpp"
 
 namespace fcgisrv {
 
-    struct IServerRequestResponse {
-        virtual ~IServerRequestResponse() = default;
+    struct IServer_Request_Response {
+        virtual ~IServer_Request_Response() = default;
 
         /**
          * Accepting incoming client requests from the server
@@ -22,7 +23,7 @@ namespace fcgisrv {
         /**
          * Send a response to the server
          */
-        virtual int respond_with(IFormattedResponse &) = 0;
+        virtual int respond_with(IFormatted_Response &) = 0;
 
         /**
          * Returns a stream that can be used to send log messages

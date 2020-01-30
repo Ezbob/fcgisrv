@@ -1,38 +1,38 @@
 
-#include "fcgisrv/http_method.hpp"
+#include "Http_Method.hpp"
 
 using namespace fcgisrv;
 
-HttpMethod fcgisrv::string_to_httpmethod(std::string const &s) {
+Http_Method fcgisrv::string_to_httpmethod(std::string const &s) {
     if (s == "GET") {
-        return HttpMethod::Get;
+        return Http_Method::Get;
     } else if (s == "POST") {
-        return HttpMethod::Post;
+        return Http_Method::Post;
     } else if (s == "PUT") {
-        return HttpMethod::Put;
+        return Http_Method::Put;
     } else if (s == "PATCH") {
-        return HttpMethod::Patch;
+        return Http_Method::Patch;
     } else if (s == "DELETE") {
-        return HttpMethod::Delete;
+        return Http_Method::Delete;
     } else if (s == "OPTIONS") {
-        return HttpMethod::Options;
+        return Http_Method::Options;
     } else {
-        return HttpMethod::Not_a_method;
+        return Http_Method::Not_a_method;
     }
 }
 
-std::string fcgisrv::httpmethod_to_string(fcgisrv::HttpMethod const &m) {
-    if (m == fcgisrv::HttpMethod::Get) {
+std::string fcgisrv::httpmethod_to_string(fcgisrv::Http_Method const &m) {
+    if (m == fcgisrv::Http_Method::Get) {
         return "GET";
-    } else if (m == fcgisrv::HttpMethod::Post) {
+    } else if (m == fcgisrv::Http_Method::Post) {
         return "POST";
-    } else if (m == fcgisrv::HttpMethod::Put) {
+    } else if (m == fcgisrv::Http_Method::Put) {
         return "PUT";
-    } else if (m == fcgisrv::HttpMethod::Patch) {
+    } else if (m == fcgisrv::Http_Method::Patch) {
         return "PATCH";
-    } else if (m == fcgisrv::HttpMethod::Delete) {
+    } else if (m == fcgisrv::Http_Method::Delete) {
         return "DELETE";
-    } else if (m == fcgisrv::HttpMethod::Options) {
+    } else if (m == fcgisrv::Http_Method::Options) {
         return "OPTIONS";
     } else {
         return "";

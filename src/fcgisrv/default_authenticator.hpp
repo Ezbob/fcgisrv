@@ -3,17 +3,17 @@
 #ifndef _HEADER_FILE_authenticator_20200103164302_
 #define _HEADER_FILE_authenticator_20200103164302_
 
-#include "iauthenticator.hpp"
-#include "iserver_request_response.hpp"
 #include <memory>
+#include "IAuthenticator.hpp"
+#include "IServer_Request_Response.hpp"
 
 namespace fcgisrv {
 
-    class DefaultAuthenticator: public IAuthenticator {
+    class Default_Authenticator: public IAuthenticator {
       public:
-        ~DefaultAuthenticator() = default;
+        ~Default_Authenticator() = default;
 
-        bool is_valid(std::shared_ptr<IServerRequestResponse>) override;
+        bool is_valid(std::shared_ptr<IServer_Request_Response>) override;
     };
 };
 

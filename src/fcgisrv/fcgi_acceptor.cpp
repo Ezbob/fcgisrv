@@ -1,17 +1,17 @@
 
-#include "fcgisrv/fcgi_acceptor.hpp"
+#include "Fcgi_Acceptor.hpp"
 
 using namespace fcgisrv;
 
-FcgiAcceptor::FcgiAcceptor(IDispatcher &dispatch, IScheduler &sch)
+Fcgi_Acceptor::Fcgi_Acceptor(IDispatcher &dispatch, IScheduler &sch)
     : m_dispatcher(dispatch)
     , m_scheduler(sch) {
     FCGX_Init();
 }
 
-void FcgiAcceptor::start_accepting() {
+void Fcgi_Acceptor::start_accepting() {
     while (true) {
-        auto request = std::make_shared<FcgiServerRequestResponse>();
+        auto request = std::make_shared<Fcgi_Server_Request_Response>();
 
         if (request->accept()) {
             m_scheduler.schedule_task([this, request] {
@@ -21,7 +21,7 @@ void FcgiAcceptor::start_accepting() {
     }
 }
 
-void FcgiAcceptor::start_nonblock() {
+void Fcgi_Acceptor::start_nonblock() {
     if (!m_accept_thread) {
         m_accept_thread = std::unique_ptr<std::thread>(new std::thread([this] {
             start_accepting();
@@ -29,6 +29,6 @@ void FcgiAcceptor::start_nonblock() {
     }
 }
 
-void FcgiAcceptor::start_block() {
+void Fcgi_Acceptor::start_block() {
     start_accepting();
 }

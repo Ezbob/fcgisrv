@@ -1,10 +1,10 @@
 
-#include "fcgisrv/default_handlers/not_found_handler.hpp"
+#include "Not_Found_Handler.hpp"
 
 using namespace fcgisrv;
 
-void NotFoundHandler::handle(
-    std::shared_ptr<fcgisrv::IServerRequestResponse> req) {
+void Not_Found_Handler::handle(
+    std::shared_ptr<fcgisrv::IServer_Request_Response> req) {
     req->respond_with(
         "HTTP/1.1 404 Not Found\r\n"
         "Status: 404 Not Found\r\n"

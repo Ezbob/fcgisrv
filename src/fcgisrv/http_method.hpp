@@ -5,7 +5,7 @@
 #include <string>
 
 namespace fcgisrv {
-    enum class HttpMethod {
+    enum class Http_Method {
         Get,
         Post,
         Put,
@@ -15,8 +15,8 @@ namespace fcgisrv {
         Not_a_method
     };
 
-    HttpMethod string_to_httpmethod(std::string const &s);
-    std::string httpmethod_to_string(HttpMethod const &m);
+    Http_Method string_to_httpmethod(std::string const &s);
+    std::string httpmethod_to_string(Http_Method const &m);
 };
 
 #endif

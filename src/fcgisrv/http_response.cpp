@@ -1,9 +1,10 @@
-#include "fcgisrv/http_response.hpp"
+#include "Http_Response.hpp"
+
 #include <string>
 
 using namespace fcgisrv;
 
-std::string HttpResponse::translate_code() {
+std::string Http_Response::translate_code() {
     switch (m_error_code) {
         case 100:
             return "Continue";
@@ -133,7 +134,7 @@ std::string HttpResponse::translate_code() {
     return "";
 }
 
-std::string HttpResponse::render() {
+std::string Http_Response::render() {
     std::stringstream res;
     std::string translated = translate_code();
 
@@ -148,26 +149,26 @@ std::string HttpResponse::render() {
 
 std::string JsonResponse::render() {
     put_header("Content-Type", "application/json");
-    return HttpResponse::render();
+    return Http_Response::render();
 }
 
-void HttpResponse::put_header(std::string const &raw) {
+void Http_Response::put_header(std::string const &raw) {
     m_header << (raw + HTTP_LINE_END);
 }
 
-void HttpResponse::put_header(std::string const &name,
-                              std::string const &value) {
+void Http_Response::put_header(std::string const &name,
+                               std::string const &value) {
     m_header << (name + ": " + value + HTTP_LINE_END);
 }
 
-void HttpResponse::status(int code) {
+void Http_Response::status(int code) {
     m_error_code = code;
 }
 
-int HttpResponse::status() {
+int Http_Response::status() {
     return m_error_code;
 }
 
-std::ostream &HttpResponse::body() {
+std::ostream &Http_Response::body() {
     return m_body;
 }

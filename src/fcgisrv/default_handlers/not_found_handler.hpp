@@ -2,13 +2,15 @@
 #pragma once
 
 #include <memory>
-#include "fcgisrv/ihandler.hpp"
-#include "fcgisrv/iserver_request_response.hpp"
+
+#include "../IHandler.hpp"
+#include "../IServer_Request_Response.hpp"
 
 namespace fcgisrv {
 
-    struct NotFoundHandler: public IHandler {
-        void handle(std::shared_ptr<fcgisrv::IServerRequestResponse>) override;
+    struct Not_Found_Handler: public IHandler {
+        void
+            handle(std::shared_ptr<fcgisrv::IServer_Request_Response>) override;
     };
 
 }; // namespace fcgisrv

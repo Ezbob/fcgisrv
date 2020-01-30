@@ -1,10 +1,10 @@
 
-#include "fcgisrv/default_dispatcher.hpp"
+#include "Default_Dispatcher.hpp"
 
 using namespace fcgisrv;
 
-std::shared_ptr<IHandler> DefaultDispatcher::select(
-    std::shared_ptr<IServerRequestResponse> req_res_ptr) const {
+std::shared_ptr<IHandler> Default_Dispatcher::select(
+    std::shared_ptr<IServer_Request_Response> req_res_ptr) const {
     auto raw_method = req_res_ptr->get_parameter("REQUEST_METHOD");
 
     if (!raw_method) {
@@ -23,7 +23,7 @@ std::shared_ptr<IHandler> DefaultDispatcher::select(
     }
 
     auto actual_method = string_to_httpmethod(raw_method);
-    if (actual_method == HttpMethod::Not_a_method) {
+    if (actual_method == Http_Method::Not_a_method) {
         return m_handler_405;
     }
 
@@ -37,7 +37,7 @@ std::shared_ptr<IHandler> DefaultDispatcher::select(
     return h_it->second;
 }
 
-std::string DefaultDispatcher::build_uri(const char *raw) const {
+std::string Default_Dispatcher::build_uri(const char *raw) const {
     std::string key;
     if (raw) {
         key = raw;
@@ -48,7 +48,7 @@ std::string DefaultDispatcher::build_uri(const char *raw) const {
     return key;
 }
 
-void DefaultDispatcher::add_end_slash(std::string &uri) const {
+void Default_Dispatcher::add_end_slash(std::string &uri) const {
     if (uri.size() == 0)
         return;
     if (uri.at(uri.size() - 1) != '/') {
@@ -56,15 +56,15 @@ void DefaultDispatcher::add_end_slash(std::string &uri) const {
     }
 }
 
-void DefaultDispatcher::dispatch(
-    std::shared_ptr<IServerRequestResponse> req_ptr) {
+void Default_Dispatcher::dispatch(
+    std::shared_ptr<IServer_Request_Response> req_ptr) {
     std::shared_ptr<IHandler> current_handler = select(req_ptr);
 
     current_handler->handle(req_ptr);
 }
 
-void DefaultDispatcher::add_endpoint(std::string uri, HttpMethod meth,
-                                     std::shared_ptr<IHandler> handler) {
+void Default_Dispatcher::add_endpoint(std::string uri, Http_Method meth,
+                                      std::shared_ptr<IHandler> handler) {
     if (!handler)
         throw std::invalid_argument("Endpoint pointer is null");
 

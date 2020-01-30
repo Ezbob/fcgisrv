@@ -5,13 +5,14 @@
 #include <string>
 #include <sstream>
 #include <ostream>
-#include "fcgisrv/iformatted_response.hpp"
+
+#include "IFormatted_Response.hpp"
 
 namespace fcgisrv {
 
     static const std::string HTTP_LINE_END = "\r\n";
 
-    class HttpResponse: public IFormattedResponse {
+    class Http_Response: public IFormatted_Response {
       protected:
         std::stringstream m_header;
         std::stringstream m_body;
@@ -33,7 +34,7 @@ namespace fcgisrv {
         std::string render() override;
     };
 
-    struct JsonResponse: public HttpResponse {
+    struct JsonResponse: public Http_Response {
         std::string render() override;
     };
 

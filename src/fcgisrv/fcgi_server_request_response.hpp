@@ -6,9 +6,9 @@
 #include <memory>
 #include <cstring>
 #include <vector>
-#include "iformatted_response.hpp"
-#include "iserver_request_response.hpp"
 #include "fcgio.h"
+#include "IFormatted_Response.hpp"
+#include "IServer_Request_Response.hpp"
 
 namespace fcgisrv {
 
@@ -23,24 +23,24 @@ namespace fcgisrv {
      * When the reference count reaches zero, the request is finished if it has
      * been accepted.
      */
-    class FcgiServerRequestResponse
-        : public IServerRequestResponse
-        , public std::enable_shared_from_this<FcgiServerRequestResponse> {
+    class Fcgi_Server_Request_Response
+        : public IServer_Request_Response
+        , public std::enable_shared_from_this<Fcgi_Server_Request_Response> {
         FCGX_Request m_request;
         bool m_is_accepted;
         fcgi_streambuf m_log_stream_buf;
         std::ostream m_log_stream;
 
       public:
-        FcgiServerRequestResponse();
+        Fcgi_Server_Request_Response();
 
-        ~FcgiServerRequestResponse();
+        ~Fcgi_Server_Request_Response();
 
         bool accept() override;
 
         bool is_accepted() override;
 
-        int respond_with(IFormattedResponse &res) override;
+        int respond_with(IFormatted_Response &res) override;
 
         int respond_with(std::string const &res) override;
 
@@ -50,7 +50,7 @@ namespace fcgisrv {
 
         const std::vector<const char *> get_parameters() const override;
 
-        std::shared_ptr<FcgiServerRequestResponse> get();
+        std::shared_ptr<Fcgi_Server_Request_Response> get();
     };
 
 };

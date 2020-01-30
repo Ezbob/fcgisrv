@@ -1,10 +1,10 @@
 
-#include "fcgisrv/default_handlers/method_not_allowed_handler.hpp"
+#include "Method_Not_Allowed_Handler.hpp"
 
 using namespace fcgisrv;
 
-void MethodNotAllowedHandler::handle(
-    std::shared_ptr<fcgisrv::IServerRequestResponse> req) {
+void Method_Not_Allowed_Handler::handle(
+    std::shared_ptr<fcgisrv::IServer_Request_Response> req) {
     req->respond_with("HTTP/1.1 405 Method Not Allowed\r\n"
                       "Status: 405 Method Not Allowed\r\n"
                       "Content-type: text/html\r\n"
