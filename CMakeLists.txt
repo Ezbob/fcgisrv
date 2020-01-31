@@ -27,6 +27,7 @@ SET(SOURCES
     ${SOURCES_PREFIX}/fcgisrv/fcgi_acceptor.cpp
     ${SOURCES_PREFIX}/fcgisrv/fcgi_server_request_response.cpp
     ${SOURCES_PREFIX}/fcgisrv/fcgi_application.cpp
+    ${SOURCES_PREFIX}/fcgisrv/json_response.cpp
 
     ${SOURCES_PREFIX}/fcgisrv/http_method.cpp
     ${SOURCES_PREFIX}/fcgisrv/http_response.cpp

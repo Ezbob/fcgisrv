@@ -34,10 +34,6 @@ namespace fcgisrv {
         std::string render() override;
     };
 
-    struct JsonResponse: public Http_Response {
-        std::string render() override;
-    };
-
 };
 
 #endif

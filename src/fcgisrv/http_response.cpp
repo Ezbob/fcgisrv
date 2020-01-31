@@ -147,11 +147,6 @@ std::string Http_Response::render() {
     return res.str();
 }
 
-std::string JsonResponse::render() {
-    put_header("Content-Type", "application/json");
-    return Http_Response::render();
-}
-
 void Http_Response::put_header(std::string const &raw) {
     m_header << (raw + HTTP_LINE_END);
 }
