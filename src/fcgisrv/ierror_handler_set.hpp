@@ -7,9 +7,10 @@
 namespace fcgisrv {
 
     struct IError_Handler_Set {
-    protected:
+      protected:
         using Ptr_t = std::shared_ptr<IHandler>;
-    public:
+
+      public:
         virtual ~IError_Handler_Set() = default;
 
         virtual std::shared_ptr<IHandler> error_401() = 0;

@@ -21,7 +21,8 @@ namespace fcgisrv {
       public:
         Dispatcher(IAuthenticator &auth, IError_Handler_Set &error_set)
             : m_authenticator(auth)
-            , m_error_set(error_set) {}
+            , m_error_set(error_set) {
+        }
 
         ~Dispatcher() = default;
 
@@ -41,7 +42,7 @@ namespace fcgisrv {
             std::unordered_map<Http_Method, std::shared_ptr<IHandler>>;
         std::unordered_map<std::string, HandlerMap_t> m_dispatch_matrix;
 
-        IError_Handler_Set &m_error_set;
         IAuthenticator &m_authenticator;
+        IError_Handler_Set &m_error_set;
     };
 };

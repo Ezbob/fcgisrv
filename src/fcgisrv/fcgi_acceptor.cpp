@@ -14,18 +14,16 @@ void Fcgi_Acceptor::start_accepting() {
         auto request = std::make_shared<Fcgi_Server_Request_Response>();
 
         if (request->accept()) {
-            m_scheduler.schedule_task([this, request] {
-                m_dispatcher.dispatch(request);
-            });
+            m_scheduler.schedule_task(
+                [this, request] { m_dispatcher.dispatch(request); });
         }
     }
 }
 
 void Fcgi_Acceptor::start_nonblock() {
     if (!m_accept_thread) {
-        m_accept_thread = std::unique_ptr<std::thread>(new std::thread([this] {
-            start_accepting();
-        }));
+        m_accept_thread = std::unique_ptr<std::thread>(
+            new std::thread([this] { start_accepting(); }));
     }
 }
 

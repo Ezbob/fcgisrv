@@ -56,15 +56,14 @@ void Dispatcher::add_end_slash(std::string &uri) const {
     }
 }
 
-void Dispatcher::dispatch(
-    std::shared_ptr<IServer_Request_Response> req_ptr) {
+void Dispatcher::dispatch(std::shared_ptr<IServer_Request_Response> req_ptr) {
     std::shared_ptr<IHandler> current_handler = select(req_ptr);
 
     current_handler->handle(req_ptr);
 }
 
 void Dispatcher::add_endpoint(std::string uri, Http_Method meth,
-                                  std::shared_ptr<IHandler> handler) {
+                              std::shared_ptr<IHandler> handler) {
     if (!handler)
         throw std::invalid_argument("Endpoint pointer is null");
 

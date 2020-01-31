@@ -3,7 +3,9 @@
 
 using namespace fcgisrv;
 
-Http_Method::Http_Method(int b) : m_value(b) {}
+Http_Method::Http_Method(int b)
+    : m_value(b) {
+}
 
 std::string Http_Method::to_string() const {
     switch (m_value) {
@@ -47,4 +49,8 @@ bool Http_Method::operator==(Http_Method const &other) {
 
 bool Http_Method::operator!=(Http_Method const &other) {
     return other.m_value != m_value;
+}
+
+int Http_Method::to_int() const {
+    return m_value;
 }

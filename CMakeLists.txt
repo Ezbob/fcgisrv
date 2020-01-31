@@ -13,7 +13,7 @@ ADD_SUBDIRECTORY(${LIB_DIR}/libfcgi)
 SET(CMAKE_CXX_STANDARD 11)
 
 # A set of compilation flags that is always on when compiling C++
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Dc_plusplus")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Dc_plusplus -Wfatal-errors")
 
 # Compilation flags that depends on build type
 # A symbol _DEBUG is exposed to enable conditional compilation through preprocessor directives

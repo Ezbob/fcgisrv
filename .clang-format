@@ -6,14 +6,14 @@ Language: Cpp
 ColumnLimit: 80
 SortIncludes: false
 AlwaysBreakTemplateDeclarations: Yes
-AllowShortLambdasOnASingleLine: Empty
+#AllowShortLambdasOnASingleLine: No
 BreakConstructorInitializers: BeforeComma
 BreakInheritanceList: BeforeComma
 BreakStringLiterals: true
 CompactNamespaces: false
 FixNamespaceComments: false
 IndentCaseLabels: true
-IndentPPDirectives: BeforeHash
+#IndentPPDirectives: BeforeHash
 IndentWrappedFunctionNames: true
 SortUsingDeclarations: true
 NamespaceIndentation: All
@@ -22,4 +22,4 @@ SpaceBeforeInheritanceColon: false
 SpacesInContainerLiterals: false
 AlignEscapedNewlines: Right
 AlignTrailingComments: true
-AllowShortFunctionsOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: false
