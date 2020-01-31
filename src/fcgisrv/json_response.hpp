@@ -5,7 +5,7 @@
 
 namespace fcgisrv {
 
-    struct JsonResponse: public Http_Response {
+    struct Json_Response: public Http_Response {
         std::string render() override;
     };
 

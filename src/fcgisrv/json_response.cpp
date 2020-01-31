@@ -3,7 +3,7 @@
 
 using namespace fcgisrv;
 
-std::string JsonResponse::render() {
+std::string Json_Response::render() {
     put_header("Content-Type", "application/json");
     return Http_Response::render();
 }
