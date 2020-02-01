@@ -8,7 +8,7 @@
 #include "iauthenticator.hpp"
 #include "idispatcher.hpp"
 #include "ischeduler.hpp"
-#include "ierror_handler_set.hpp"
+#include "ierror_handler_provider.hpp"
 
 namespace fcgisrv {
     class Fcgi_Application: public IApplication {
@@ -18,7 +18,7 @@ namespace fcgisrv {
 
         RC_t<IScheduler> m_async_scheduler;
         RC_t<IAuthenticator> m_authenticator;
-        RC_t<IError_Handler_Set> m_errors;
+        RC_t<IError_Handler_Provider> m_errors;
         RC_t<IDispatcher> m_dispatcher;
         RC_t<IAcceptor> m_acceptor;
 
@@ -26,9 +26,10 @@ namespace fcgisrv {
         Fcgi_Application(
             std::shared_ptr<IScheduler>,
             std::shared_ptr<IAuthenticator> = RC_t<IAuthenticator>(),
+            std::shared_ptr<IError_Handler_Provider> =
+                RC_t<IError_Handler_Provider>(),
             std::shared_ptr<IDispatcher> = RC_t<IDispatcher>(),
-            std::shared_ptr<IAcceptor> = RC_t<IAcceptor>(),
-            std::shared_ptr<IError_Handler_Set> = RC_t<IError_Handler_Set>());
+            std::shared_ptr<IAcceptor> = RC_t<IAcceptor>());
 
         void add_get(std::string, std::shared_ptr<IHandler>);
         void add_post(std::string, std::shared_ptr<IHandler>);

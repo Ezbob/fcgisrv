@@ -11,9 +11,9 @@ using namespace fcgisrv;
 
 Fcgi_Application::Fcgi_Application(RC_t<IScheduler> sch,
                                    RC_t<IAuthenticator> auth,
+                                   RC_t<IError_Handler_Provider> error_set,
                                    RC_t<IDispatcher> dispatch,
-                                   RC_t<IAcceptor> acceptor,
-                                   RC_t<IError_Handler_Set> error_set)
+                                   RC_t<IAcceptor> acceptor)
     : m_async_scheduler(sch)
     , m_authenticator(!auth ? std::make_shared<Authenticator>() : auth)
     , m_errors(!error_set ? std::make_shared<Error_Handler_Set>() : error_set)

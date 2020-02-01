@@ -8,30 +8,30 @@ std::shared_ptr<IHandler> Dispatcher::select(
     auto raw_method = req_res_ptr->get_parameter("REQUEST_METHOD");
 
     if (!raw_method) {
-        return m_error_set.error_500();
+        return m_error_set.get_error(500);
     }
 
     if (!m_authenticator.is_valid(req_res_ptr)) {
-        return m_error_set.error_401();
+        return m_error_set.get_error(401);
     }
 
     auto key = build_uri(req_res_ptr->get_parameter("PATH_INFO"));
 
     auto it = m_dispatch_matrix.find(key);
     if (it == m_dispatch_matrix.end()) {
-        return m_error_set.error_404();
+        return m_error_set.get_error(404);
     }
 
     auto actual_method = Http_Method::from_string(raw_method);
     if (actual_method == Http_Method::Not_a_method) {
-        return m_error_set.error_405();
+        return m_error_set.get_error(405);
     }
 
     const auto &entry = it->second;
 
     auto h_it = entry.find(actual_method);
     if (h_it == entry.end()) {
-        return m_error_set.error_405();
+        return m_error_set.get_error(405);
     }
 
     return h_it->second;
