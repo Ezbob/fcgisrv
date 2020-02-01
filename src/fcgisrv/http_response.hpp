@@ -7,18 +7,15 @@
 #include <ostream>
 
 #include "iformatted_response.hpp"
+#include "http_error_code.hpp"
 
 namespace fcgisrv {
-
-    static const std::string HTTP_LINE_END = "\r\n";
 
     class Http_Response: public IFormatted_Response {
       protected:
         std::stringstream m_header;
         std::stringstream m_body;
-        int m_error_code = 200;
-
-        std::string translate_code();
+        Http_Error_Code m_error_code = 200;
 
       public:
         void put_header(std::string const &raw);
