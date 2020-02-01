@@ -32,6 +32,10 @@ void Http_Response::status(int code) {
     m_error_code = code;
 }
 
+void Http_Response::status(Http_Error_Code const &code) {
+    m_error_code = code.to_int();
+}
+
 int Http_Response::status() {
     return m_error_code.to_int();
 }

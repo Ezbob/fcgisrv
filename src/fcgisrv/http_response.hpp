@@ -23,6 +23,7 @@ namespace fcgisrv {
         void put_header(std::string const &name, std::string const &value);
 
         void status(int code);
+        void status(Http_Error_Code const &code);
 
         int status();
 
