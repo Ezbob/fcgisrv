@@ -33,11 +33,7 @@ SET(SOURCES
     ${SOURCES_PREFIX}/fcgisrv/http_response.cpp
     ${SOURCES_PREFIX}/fcgisrv/http_error_code.cpp
     ${SOURCES_PREFIX}/fcgisrv/error_handler_set.cpp
-    ${SOURCES_PREFIX}/fcgisrv/default_handlers/error_handler_template.cpp
-    ${SOURCES_PREFIX}/fcgisrv/default_handlers/internal_server_error_handler.cpp
-    ${SOURCES_PREFIX}/fcgisrv/default_handlers/method_not_allowed_handler.cpp
-    ${SOURCES_PREFIX}/fcgisrv/default_handlers/not_found_handler.cpp
-    ${SOURCES_PREFIX}/fcgisrv/default_handlers/unauthorized_handler.cpp
+    ${SOURCES_PREFIX}/fcgisrv/generic_error_handler.cpp
 )
 
 SET(INCLUDES

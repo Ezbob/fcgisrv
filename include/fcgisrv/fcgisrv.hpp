@@ -1,7 +1,4 @@
-#include "fcgisrv/default_handlers/internal_server_error_handler.hpp"
-#include "fcgisrv/default_handlers/method_not_allowed_handler.hpp"
-#include "fcgisrv/default_handlers/not_found_handler.hpp"
-#include "fcgisrv/default_handlers/unauthorized_handler.hpp"
+#include "fcgisrv/generic_error_handler.hpp"
 #include "fcgisrv/authenticator.hpp"
 #include "fcgisrv/dispatcher.hpp"
 #include "fcgisrv/fcgi_acceptor.hpp"
