@@ -10,6 +10,7 @@
 #include "fcgisrv/iauthenticator.hpp"
 #include "fcgisrv/idispatcher.hpp"
 #include "fcgisrv/iformatted_response.hpp"
+#include "fcgisrv/ierror_handler_provider.hpp"
 #include "fcgisrv/ihandler.hpp"
 #include "fcgisrv/ischeduler.hpp"
 #include "fcgisrv/iserver_request_response.hpp"
