@@ -5,6 +5,7 @@
 #include "fcgisrv/fcgi_application.hpp"
 #include "fcgisrv/http_method.hpp"
 #include "fcgisrv/http_response.hpp"
+#include "fcgisrv/http_helpers.hpp"
 #include "fcgisrv/iacceptor.hpp"
 #include "fcgisrv/iauthenticator.hpp"
 #include "fcgisrv/idispatcher.hpp"
