@@ -4,10 +4,6 @@
 #include <unordered_map>
 #include <memory>
 #include <string>
-#include "default_handlers/internal_server_error_handler.hpp"
-#include "default_handlers/method_not_allowed_handler.hpp"
-#include "default_handlers/not_found_handler.hpp"
-#include "default_handlers/unauthorized_handler.hpp"
 #include "http_method.hpp"
 #include "iauthenticator.hpp"
 #include "idispatcher.hpp"
