@@ -3,13 +3,13 @@
 
 #include <memory>
 
-#include "iserver_request_response.hpp"
+#include "fcgi_server_request_response.hpp"
 
 namespace fcgisrv {
 
     struct IAuthenticator {
         virtual ~IAuthenticator() = default;
-        virtual bool is_valid(std::shared_ptr<IServer_Request_Response>) = 0;
+        virtual bool is_valid(Fcgi_Request_Response) = 0;
     };
 
 }; // namespace fcgisrv

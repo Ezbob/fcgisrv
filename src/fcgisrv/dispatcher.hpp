@@ -7,7 +7,6 @@
 #include "http_method.hpp"
 #include "iauthenticator.hpp"
 #include "idispatcher.hpp"
-#include "iserver_request_response.hpp"
 #include "ierror_handler_provider.hpp"
 #include "error_handler_set.hpp"
 
@@ -22,14 +21,13 @@ namespace fcgisrv {
 
         ~Dispatcher() = default;
 
-        void dispatch(std::shared_ptr<IServer_Request_Response>) override;
+        void dispatch(Fcgi_Request_Response) override;
 
         void add_endpoint(std::string, Http_Method,
                           std::shared_ptr<IHandler>) override;
 
       private:
-        std::shared_ptr<IHandler>
-            select(std::shared_ptr<IServer_Request_Response> req_ptr) const;
+        std::shared_ptr<IHandler> select(Fcgi_Request_Response req_ptr) const;
 
         std::string build_uri(const char *raw) const;
         void add_end_slash(std::string &uri) const;

@@ -9,6 +9,10 @@ Fcgi_Server_Request_Response::Fcgi_Server_Request_Response()
     : m_is_accepted(false)
     , m_log_stream(&m_log_stream_buf) {
     FCGX_InitRequest(&m_request, 0, 0);
+    m_is_accepted = (FCGX_Accept_r(&m_request) == 0);
+    if (m_is_accepted) {
+        m_log_stream_buf.attach(m_request.err);
+    }
 }
 
 Fcgi_Server_Request_Response::~Fcgi_Server_Request_Response() {
@@ -17,21 +21,13 @@ Fcgi_Server_Request_Response::~Fcgi_Server_Request_Response() {
     }
 }
 
-bool Fcgi_Server_Request_Response::accept() {
-    m_is_accepted = (FCGX_Accept_r(&m_request) == 0);
-    if (m_is_accepted) {
-        m_log_stream_buf.attach(m_request.err);
-    }
-    return m_is_accepted;
-}
-
-bool Fcgi_Server_Request_Response::is_accepted() {
+bool Fcgi_Server_Request_Response::is_accepted() const {
     return m_is_accepted;
 }
 
 int Fcgi_Server_Request_Response::respond_with(IFormatted_Response &res) {
-    auto r = res.render();
-    return FCGX_PutStr(r.c_str(), r.size(), m_request.out);
+    std::string rendered = res.render();
+    return FCGX_PutStr(rendered.c_str(), rendered.size(), m_request.out);
 }
 
 int Fcgi_Server_Request_Response::respond_with(std::string const &res) {
@@ -42,16 +38,22 @@ std::ostream &Fcgi_Server_Request_Response::log_out() {
     return m_log_stream;
 }
 
-char const *
-    Fcgi_Server_Request_Response::get_parameter(std::string const &name) const {
-    return FCGX_GetParam(name.c_str(), m_request.envp);
+bool Fcgi_Server_Request_Response::parameter(std::string const &name,
+                                             std::string &out) const {
+    const char *param = FCGX_GetParam(name.c_str(), m_request.envp);
+    if (param == nullptr) {
+        return false;
+    }
+    out = param;
+    return true;
 }
 
-const std::vector<const char *>
-    Fcgi_Server_Request_Response::get_parameters() const {
-    std::vector<const char *> res;
-    for (size_t i = 0; m_request.envp[i] != nullptr; ++i)
+const std::vector<std::string>
+    Fcgi_Server_Request_Response::parameters() const {
+    std::vector<std::string> res;
+    for (size_t i = 0; m_request.envp[i] != nullptr; ++i) {
         res.push_back(m_request.envp[i]);
+    }
     return res;
 }
 

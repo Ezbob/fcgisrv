@@ -2,14 +2,13 @@
 #pragma once
 
 #include <memory>
-#include "iserver_request_response.hpp"
+#include "fcgi_server_request_response.hpp"
 
 namespace fcgisrv {
 
     struct IHandler {
         virtual ~IHandler() = default;
-        virtual void
-            handle(std::shared_ptr<IServer_Request_Response> request) = 0;
+        virtual void handle(Fcgi_Request_Response request) = 0;
     };
 
 };
