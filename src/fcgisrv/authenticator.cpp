@@ -4,6 +4,6 @@
 
 using namespace fcgisrv;
 
-bool Authenticator::is_valid(std::shared_ptr<IServer_Request_Response>) {
+bool Authenticator::is_valid(Fcgi_Request_Response) {
     return true;
 }

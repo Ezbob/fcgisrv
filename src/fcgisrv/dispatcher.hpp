@@ -29,9 +29,6 @@ namespace fcgisrv {
       private:
         std::shared_ptr<IHandler> select(Fcgi_Request_Response req_ptr) const;
 
-        std::string build_uri(const char *raw) const;
-        void add_end_slash(std::string &uri) const;
-
         using HandlerMap_t =
             std::unordered_map<Http_Method, std::shared_ptr<IHandler>>;
         std::unordered_map<std::string, HandlerMap_t> m_dispatch_matrix;

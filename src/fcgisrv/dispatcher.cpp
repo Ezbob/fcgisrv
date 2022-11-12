@@ -3,11 +3,21 @@
 
 using namespace fcgisrv;
 
-std::shared_ptr<IHandler> Dispatcher::select(
-    std::shared_ptr<IServer_Request_Response> req_res_ptr) const {
-    auto raw_method = req_res_ptr->get_parameter("REQUEST_METHOD");
+namespace {
+    void add_slash(std::string &uri) {
+        if (uri.size() == 0) {
+            uri = "/";
+        }
+        if (uri.at(uri.size() - 1) != '/') {
+            uri = uri + "/";
+        }
+    }
+};
 
-    if (!raw_method) {
+std::shared_ptr<IHandler>
+    Dispatcher::select(Fcgi_Request_Response req_res_ptr) const {
+    std::string raw_method;
+    if (!req_res_ptr->parameter("REQUEST_METHOD", raw_method)) {
         return m_error_set.get_error(500);
     }
 
@@ -15,9 +25,13 @@ std::shared_ptr<IHandler> Dispatcher::select(
         return m_error_set.get_error(401);
     }
 
-    auto key = build_uri(req_res_ptr->get_parameter("PATH_INFO"));
+    std::string uri;
+    if (!req_res_ptr->parameter("PATH_INFO", uri)) {
+        return m_error_set.get_error(500);
+    }
+    add_slash(uri);
 
-    auto it = m_dispatch_matrix.find(key);
+    auto it = m_dispatch_matrix.find(uri);
     if (it == m_dispatch_matrix.end()) {
         return m_error_set.get_error(404);
     }
@@ -37,26 +51,7 @@ std::shared_ptr<IHandler> Dispatcher::select(
     return h_it->second;
 }
 
-std::string Dispatcher::build_uri(const char *raw) const {
-    std::string key;
-    if (raw) {
-        key = raw;
-        add_end_slash(key);
-    } else { // PATH_INFO is not here we are aiming for /
-        key = "/";
-    }
-    return key;
-}
-
-void Dispatcher::add_end_slash(std::string &uri) const {
-    if (uri.size() == 0)
-        return;
-    if (uri.at(uri.size() - 1) != '/') {
-        uri = uri + "/";
-    }
-}
-
-void Dispatcher::dispatch(std::shared_ptr<IServer_Request_Response> req_ptr) {
+void Dispatcher::dispatch(Fcgi_Request_Response req_ptr) {
     std::shared_ptr<IHandler> current_handler = select(req_ptr);
 
     current_handler->handle(req_ptr);
@@ -64,10 +59,11 @@ void Dispatcher::dispatch(std::shared_ptr<IServer_Request_Response> req_ptr) {
 
 void Dispatcher::add_endpoint(std::string uri, Http_Method meth,
                               std::shared_ptr<IHandler> handler) {
-    if (!handler)
+    if (!handler) {
         throw std::invalid_argument("Endpoint pointer is null");
+    }
 
-    add_end_slash(uri);
+    add_slash(uri);
 
     auto endpoint_it = m_dispatch_matrix.find(uri);
     if (endpoint_it == m_dispatch_matrix.end()) {

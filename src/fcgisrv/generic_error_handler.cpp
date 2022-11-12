@@ -42,8 +42,7 @@ Http_Response Generic_Error_Handler::generate_message() {
     return response;
 }
 
-void Generic_Error_Handler::handle(
-    std::shared_ptr<IServer_Request_Response> rr) {
+void Generic_Error_Handler::handle(Fcgi_Request_Response rr) {
     Http_Response html = generate_message();
     rr->respond_with(html);
 }

@@ -5,7 +5,7 @@
 
 #include <memory>
 #include "iauthenticator.hpp"
-#include "iserver_request_response.hpp"
+#include "fcgi_server_request_response.hpp"
 
 namespace fcgisrv {
 
@@ -13,7 +13,7 @@ namespace fcgisrv {
       public:
         ~Authenticator() = default;
 
-        bool is_valid(std::shared_ptr<IServer_Request_Response>) override;
+        bool is_valid(Fcgi_Request_Response) override;
     };
 };
 

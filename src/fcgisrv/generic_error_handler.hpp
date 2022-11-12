@@ -18,7 +18,7 @@ namespace fcgisrv {
         Generic_Error_Handler(int);
         ~Generic_Error_Handler() = default;
 
-        void handle(std::shared_ptr<IServer_Request_Response>) override;
+        void handle(Fcgi_Request_Response) override;
     };
 
 };
