@@ -27,11 +27,11 @@ bool Fcgi_Server_Request_Response::is_accepted() const {
 
 int Fcgi_Server_Request_Response::respond_with(IFormatted_Response &res) {
     std::string rendered = res.render();
-    return FCGX_PutStr(rendered.c_str(), rendered.size(), m_request.out);
+    return FCGX_PutStr(rendered.c_str(), static_cast<int>(rendered.size()), m_request.out);
 }
 
 int Fcgi_Server_Request_Response::respond_with(std::string const &res) {
-    return FCGX_PutStr(res.c_str(), res.size(), m_request.out);
+    return FCGX_PutStr(res.c_str(), static_cast<int>(res.size()), m_request.out);
 }
 
 std::ostream &Fcgi_Server_Request_Response::log_out() {
