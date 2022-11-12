@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "GCC",
+
+            "defines": [
+                "_DEBUG",
+                "ASIO_STANDALONE"
+            ],
+            "windowsSdkVersion": "10.0.17763.0",
+            "compilerPath": "gcc",
+            "intelliSenseMode": "gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/lib/fcgisrv/src/**",
+                "${workspaceFolder}/lib/fcgisrv/lib/libfcgi/include",
+                "${workspaceFolder}/lib/asio/asio/include",
+                "${workspaceFolder}/lib/json11",
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/lib/fcgisrv/include"
+            ]
+        }
+    ],
+    "version": 4
+}

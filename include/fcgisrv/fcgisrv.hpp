@@ -13,6 +13,5 @@
 #include "fcgisrv/ierror_handler_provider.hpp"
 #include "fcgisrv/ihandler.hpp"
 #include "fcgisrv/ischeduler.hpp"
-#include "fcgisrv/iserver_request_response.hpp"
 #include "fcgisrv/fcgi_server_request_response.hpp"
 #include "fcgisrv/json_response.hpp"

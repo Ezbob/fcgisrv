@@ -74,13 +74,13 @@
 #define HAVE_SYS_STAT_H 1
 
 /* Define if you have the <sys/time.h> header file. */
-#define HAVE_SYS_TIME_H 1
+//#define HAVE_SYS_TIME_H 1
 
 /* Define if you have the <sys/types.h> header file. */
 #define HAVE_SYS_TYPES_H 1
 
 /* Define if you have the <unistd.h> header file. */
-#define HAVE_UNISTD_H 1
+//#define HAVE_UNISTD_H 1
 
 /* Define if va_arg(arg, long double) crashes the compiler */
 /* #undef HAVE_VA_ARG_LONG_DOUBLE_BUG */

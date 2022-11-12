@@ -1,24 +1,18 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.1.3)
 
 # Name and description are injected from makefile
-PROJECT(${PROJECT_NAME})
+PROJECT(fcgisrv)
 
 # Some paths
 SET(SOURCES_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/src)
 SET(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
-ADD_SUBDIRECTORY(${LIB_DIR}/libfcgi)
+ADD_SUBDIRECTORY(${LIB_DIR}/libfcgi EXCLUDE_FROM_ALL)
 
 # tests for compiler compliance and sets the C++ standard to C++11
 SET(CMAKE_CXX_STANDARD 11)
 
-# A set of compilation flags that is always on when compiling C++
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Dc_plusplus -Wfatal-errors")
-
-# Compilation flags that depends on build type
-# A symbol _DEBUG is exposed to enable conditional compilation through preprocessor directives
-SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG -g")
-SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+option(BUILD_EXAMPLES "build examples" ON)
 
 # Sources sets
 SET(SOURCES
@@ -41,12 +35,12 @@ SET(INCLUDES
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
-# lib without the main file
 ADD_LIBRARY(fcgisrv SHARED "")
+
 TARGET_SOURCES(fcgisrv PRIVATE ${SOURCES})
 TARGET_INCLUDE_DIRECTORIES(fcgisrv PUBLIC ${INCLUDES})
 TARGET_LINK_LIBRARIES(fcgisrv PUBLIC fcgi-lib)
-TARGET_COMPILE_OPTIONS(fcgisrv PRIVATE "-fPIC")
+TARGET_COMPILE_DEFINITIONS(fcgisrv PRIVATE c_plusplus=1)
 
 # sockets for win and other
 if(WIN32)
@@ -55,3 +49,25 @@ else(WIN32)
     FIND_PACKAGE(Threads)
     TARGET_LINK_LIBRARIES(fcgisrv PRIVATE ${CMAKE_THREAD_LIBS_INIT})
 endif(WIN32)
+
+
+ADD_LIBRARY(fcgisrv-static STATIC "")
+
+TARGET_SOURCES(fcgisrv-static PRIVATE ${SOURCES})
+TARGET_INCLUDE_DIRECTORIES(fcgisrv-static PUBLIC ${INCLUDES})
+TARGET_LINK_LIBRARIES(fcgisrv-static PUBLIC fcgi-lib)
+TARGET_COMPILE_DEFINITIONS(fcgisrv-static PRIVATE c_plusplus=1)
+
+set_property(TARGET fcgisrv-static PROPERTY OUTPUT_NAME fcgisrv)
+
+# sockets for win and other
+if(WIN32)
+    TARGET_LINK_LIBRARIES(fcgisrv-static PRIVATE ws2_32)
+else(WIN32)
+    FIND_PACKAGE(Threads)
+    TARGET_LINK_LIBRARIES(fcgisrv-static PRIVATE ${CMAKE_THREAD_LIBS_INIT})
+endif(WIN32)
+
+if(BUILD_EXAMPLES)
+    ADD_SUBDIRECTORY(${CMAKE_CURRENT_LIST_DIR}/examples/fcgitest)
+endif(BUILD_EXAMPLES)
