@@ -6,8 +6,10 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 include(ConfigValues)
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/include/fcgi_config.h.in ${CMAKE_CURRENT_SOURCE_DIR}/include/fcgi_config.h)
-
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/fcgi_config.h.in
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/fcgi_config.h
+)
 
 SET("FCGI_LIB_SOURCES"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/fcgi_stdio.c"
